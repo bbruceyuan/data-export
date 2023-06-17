@@ -50,7 +50,7 @@ def parse_file(file_path: pathlib.Path) -> List[Memo]:
         </div>
 
     """
-    with open(file_path, 'r') as f:
+    with open(file_path, 'r', encoding='utf-8') as f:
         file_content = f.read()
     # 提前替换<strong></strong> b 标签
     file_content = re.sub(r"<b>(.+?)</b>",
@@ -176,7 +176,7 @@ def write_memo_as_md(memos: List[Memo], file_path: Optional[pathlib.Path] = None
         return ret
 
     memos = sorted(memos)
-    with file_path.open('w') as f:
+    with file_path.open('w', encoding='utf-8') as f:
         for memo in memos:
             tmp = _memo_to_md(memo)
             f.write(tmp)
