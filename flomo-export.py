@@ -169,6 +169,12 @@ def write_memo_as_md(memos: List[Memo], file_path: Optional[pathlib.Path] = None
         for one_line in contents:
             if one_line:
                 ret += "\t" + one_line + '\n\n'
+                
+        if one_memo.file_list:
+            print(one_memo.file_list)
+            for file in one_memo.file_list:
+                ret += "\n\n"
+                ret += f"![{file}]({file})"
 
         # 如果是导入到 logseq 中，使用下面的三行
         # ret += "\t- " + one_memo.content
